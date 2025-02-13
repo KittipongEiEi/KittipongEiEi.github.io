@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Gallery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        body {
+            background-color: #ffebf0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #e63946;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            padding: 20px;
+            background: #ffe4e1;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 3px dashed #e63946;
+        }
+        .image-container {
+            overflow: hidden;
+            border-radius: 15px;
+            border: 3px dashed #e63946;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+            width: 250px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #e63946;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.5);
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .heart {
+            color: #e63946;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>You & Me <span class="heart">❤️</span></h1>
+    <div class="gallery-container"></div>
+    <div class="footer"><a href="sound.html" target="_blank">I'm so lucky to have u ❤️</a></div>
+    <script>
+        $(document).ready(function () {
+            const images = [
+                "1.jpeg", "3.jpeg", "5.jpeg", "6.jpeg", "8.jpeg", "9.jpeg", "11.jpeg", "12.jpeg",
+                "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18 (1).jpeg", "18 (2).jpeg",
+                "18 (3).jpeg", "18 (4).jpeg", "18 (5).jpeg", "18 (6).jpeg", "18 (7).jpeg", "18 (8).jpeg", "18 (9).jpeg",
+            ];
+            function loadImages() {
+                $(".gallery-container").empty();
+                let shuffledImages = images.sort(() => 0.5 - Math.random()).slice(0, 4);
+                shuffledImages.forEach(src => {
+                    $(".gallery-container").append(`<div class='image-container'><img src='${src}' alt='Valentine'></div>`);
+                });
+            }
+            loadImages();
+            setInterval(loadImages, 5000);
+        });
+    </script>
+</body>
+</html>

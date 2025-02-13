@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Valentine Message</title>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffe6eb;
+            color: #ff4d6d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6699;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(255, 102, 153, 0.6);
+            opacity: 0.9;
+            animation: bounceIn 1s ease;
+        }
+
+        #container {
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #ff99aa;
+            border-radius: 25px;
+            outline: none;
+            background-color: #ffd9e6;
+            color: #ff3366;
+            margin-bottom: 15px;
+            transition: box-shadow 0.3s, border-color 0.3s;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+        }
+
+        input[type="password"]:focus {
+            box-shadow: 0 0 15px rgba(255, 102, 153, 0.9);
+            border-color: #ff4d6d;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ff4d6d, #ff99aa);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #hiddenMessage {
+            display: none;
+            margin-top: 10px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff0f5, #ffe6eb);
+            border: 3px dashed #ff99aa;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            text-align: left;
+            color: #ff4d6d;
+            animation: slideIn 1s ease forwards;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            width: 95%;
+            max-width: 600px;
+            max-height: 70vh;
+            box-sizing: border-box;
+        }
+
+        #nextButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ff99aa, #ffb3c1);
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #nextButton:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="messageTitle">Enter the Secret Code</h1>
+        <div id="passwordPrompt">
+            <input type="password" id="passwordInput" placeholder="••••••">
+            <button id="submitPassword">Submit</button>
+        </div>
+        <p id="errorMessage" style="color: #ff4d6d; display: none;">❌ Incorrect password. Try again.</p>
+        <div id="hiddenMessage">
+            <h2 style="text-align: center; color: #ff6699;">💕 Message for You 💕</h2>
+            <p id="typedMessage"></p>
+            <a id="nextButton" href="time.html">Proceed</a>
+        </div>
+    </div>
+
+    <script>
+        let isProcessing = false;
+
+        document.getElementById('submitPassword').addEventListener('click', () => {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            const password = document.getElementById('passwordInput').value;
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const passwordPrompt = document.getElementById('passwordPrompt');
+            const messageTitle = document.getElementById('messageTitle');
+            const typedMessage = document.getElementById('typedMessage');
+            const nextButton = document.getElementById('nextButton');
+
+            if (password === '080149') {
+                messageTitle.style.display = 'none';
+                hiddenMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                passwordPrompt.style.display = 'none';
+
+                const fullMessage = "สุขสันต์วันวาเลนไทน์ & วันครบรอบของเรานะที่รักกกก 💕✨\n\n" +
+                    "แค่มีเธออยู่ตรงนี้ โลกก็สดใสขึ้นทันทีเลย เค้ารักเธอมากนะ ขอบคุณที่ทำให้ทุกวันพิเศษขึ้น " +
+                    "เค้าสัญญาว่าจะอยู่ข้างๆ เธอเสมอ ไม่ว่าจะวันไหนก็ตาม 💖\n\n" +
+                    "วันนี้โคตรพิเศษเลย เพราะไม่ใช่แค่วาเลนไทน์ แต่ยังเป็นวันครบรอบของเราด้วย! " +
+                    "ตั้งแต่วันแรกที่เราอยู่ด้วยกัน ทุกวันแม่งโคตรมีความหมายเลยอะ แค่มีเธออยู่ข้างๆ โลกก็ดีขึ้นเป็นสิบเท่า 💖\n\n" +
+                    "เค้าอยากบอกว่ารักเธอมากจริงๆ นะ ขอบคุณที่อยู่ด้วยกันมาตลอด อยู่ข้างๆ กันไม่ว่าจะเจออะไร " +
+                    "เค้าสัญญาว่าจะรักเธอ ดูแลเธอ และทำให้ทุกวันของเรามีแต่รอยยิ้มแบบนี้ไปนานๆ 💞\n\n" +
+                    "รักสุดหัวใจเลยนะคะที่รัก 💖💖";
+
+
+                let index = 0;
+                typedMessage.style.display = 'block';
+                const typeInterval = setInterval(() => {
+                    if (index < fullMessage.length) {
+                        typedMessage.textContent += fullMessage.charAt(index);
+                        index++;
+                    } else {
+                        clearInterval(typeInterval);
+                        nextButton.style.display = 'block';
+                    }
+                }, 50);
+            } else {
+                errorMessage.style.display = 'block';
+                hiddenMessage.style.display = 'none';
+                isProcessing = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

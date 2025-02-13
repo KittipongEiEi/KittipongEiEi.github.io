@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ถึงแฟนสุดที่รัก</title>
+    <style>
+        body {
+            background-color: #ffebef;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            display: inline-flex; /* ใช้ inline-flex เพื่อให้กรอบขยายตามขนาดของปุ่ม */
+            max-width: 90%;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image {
+            width: 80%;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #d9534f;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px; /* ใช้ gap เพื่อรักษาระยะห่างระหว่างปุ่ม */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            display: inline-block; /* ปรับให้ปุ่มมีขนาดพอดีกับเนื้อหา */
+            z-index: 1; /* ให้ปุ่มสีแดงอยู่ด้านล่างปุ่มสีเขียว */
+        }
+        .yes {
+            background-color: #5cb85c;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #4cae4c;
+        }
+        .no {
+            background-color: #d9534f;
+            color: white;
+            z-index: 2; /* ปุ่มสีแดงจะอยู่ด้านบน */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="main.jpeg" alt="น่ารักมั้ย" class="image" id="mainImage">
+        <h2 id="textMessage">เธอรักเค้ามะ???</h2>
+        <div class="buttons">
+            <button class="btn yes" id="yesButton" onclick="happyReaction()">รักสิ</button>
+            <button class="btn no" id="noButton" onclick="moveButton()">ไม่รักเว้ยย</button>
+        </div>
+    </div>
+
+    <script>
+        let yesButtonScale = 1;
+        const messages = [
+            "เธอไม่รักเค้าจริงๆเหรอ?",
+            "เค้่าเสียใจนะ",
+            "อย่าใจร้ายกับเค้าเลยน้าาา",
+            "ทำไมเธอไม่รักเค้า",
+            "งั้นกดปุ่มเขียวเถอะแมร่งง~"
+        ];
+        let messageIndex = 0;
+
+        function happyReaction() {
+            const textMessage = document.getElementById('textMessage');
+            document.getElementById('mainImage').src = 'yes.jpeg';
+            textMessage.textContent = "เค้ารักเธอเหมือนกันน้า 💖";
+            setTimeout(() => {
+                window.location.href = 'letter.html';
+            }, 1000);
+        }
+
+        function moveButton() {
+            document.getElementById('mainImage').src = 'no.jpeg';
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.getElementById('yesButton');
+            const textMessage = document.getElementById('textMessage');
+
+            // เปลี่ยนข้อความเมื่อกดปุ่ม "ไม่"
+            textMessage.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+
+            // ขยายปุ่มสีเขียวเมื่อกดปุ่มสีแดง
+            yesButtonScale += 0.1;
+            yesButton.style.transform = `scale(${yesButtonScale})`;
+        }
+    </script>
+</body>
+</html>
