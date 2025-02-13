@@ -18,17 +18,17 @@
             background: url('last.jpeg') no-repeat center center;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             text-align: center;
             position: relative;
         }
         .message-container {
             position: absolute;
-            bottom: 10%;
-            width: 100%;
+            bottom: 5vh; /* ปรับให้ไม่ตกขอบ */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
             text-align: center;
-            padding: 10px;
         }
         .message {
             font-size: 3rem;
@@ -37,16 +37,11 @@
             text-shadow: 0px 0px 10px rgba(255, 255, 255, 1), 
                          0px 0px 20px rgba(255, 107, 129, 0.9), 
                          0px 0px 30px rgba(255, 0, 0, 0.8);
-            padding: 5px 15px;
-            display: inline-block;
+            display: block;
         }
 
         /* ปรับให้รองรับมือถือ */
         @media (max-width: 768px) {
-            body {
-                background-size: cover;
-                background-position: center;
-            }
             .message {
                 font-size: 2rem;
                 text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 
@@ -54,7 +49,8 @@
                              0px 0px 20px rgba(255, 0, 0, 0.8);
             }
             .message-container {
-                bottom: 5%;
+                bottom: 3vh; /* ปรับให้อยู่สูงขึ้นเล็กน้อยในมือถือ */
+                width: 95%;
             }
         }
     </style>
