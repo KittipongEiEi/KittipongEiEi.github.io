@@ -5,41 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day 💖</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('last.jpeg') no-repeat center/cover;
-            overflow: hidden;
+            background: url('last.jpeg') no-repeat center center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             text-align: center;
             position: relative;
         }
         .message-container {
             position: absolute;
-            bottom: 20px;
+            bottom: 10%;
             width: 100%;
             text-align: center;
+            padding: 10px;
         }
         .message {
             font-size: 3rem;
             font-weight: bold;
             color: #fff;
-            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9), 
-                         0px 0px 20px rgba(255, 107, 129, 0.8), 
-                         0px 0px 30px rgba(255, 0, 0, 0.7);
-            padding: 10px 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 1), 
+                         0px 0px 20px rgba(255, 107, 129, 0.9), 
+                         0px 0px 30px rgba(255, 0, 0, 0.8);
+            padding: 5px 15px;
             display: inline-block;
         }
-        
-        /* ปรับขนาดตัวอักษรสำหรับมือถือ */
+
+        /* ปรับให้รองรับมือถือ */
         @media (max-width: 768px) {
+            body {
+                background-size: cover;
+                background-position: center;
+            }
             .message {
                 font-size: 2rem;
-                text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9), 
-                             0px 0px 15px rgba(255, 107, 129, 0.8), 
-                             0px 0px 20px rgba(255, 0, 0, 0.7);
+                text-shadow: 0px 0px 8px rgba(255, 255, 255, 1), 
+                             0px 0px 15px rgba(255, 107, 129, 0.9), 
+                             0px 0px 20px rgba(255, 0, 0, 0.8);
+            }
+            .message-container {
+                bottom: 5%;
             }
         }
     </style>
